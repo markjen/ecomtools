@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="span9">
+
+    <h1>eCommerce Tools</h1>
+    <p>
+      <a href="http://github.com/markjen/ecomtools">Source code</a>
+    </p>
+
+    <h2>Register</h2>
+    <p>Receive an API key by email.</p>
+
+    <form class="form-inline" method="POST" action="/register">
+      <input type="text" class="input-small" placeholder="Email" name="email" />
+      <button type="submit" class="btn">register</button>
+    </form>
+
+    <h2>API Docs</h2>
+    <h3>USPS Webtools</h3>
+    <h4>Verify</h4>
+    <p>
+      The <a href="https://www.usps.com/webtools/htm/Address-Information-v3-1b.htm#_Toc131231396" target="_blank">Address Standardization Web Tool</a> corrects errors in street addresses, including abbreviations and missing information, and supplies ZIP Codes and ZIP Codes + 4.
+    </p>
+    <h5>Request</h5>
+    <p>
+      Method: GET
+    </p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>param</th>
+          <th></th>
+          <th>description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>key</td>
+          <td><span class="label label-important">required</span></td>
+          <td>API key</td>
+        </tr>
+        <tr>
+          <td>firmname</td>
+          <td><span class="label label-info">optional</span></td>
+          <td>Addressee</td>
+        </tr>
+        <tr>
+          <td>address1</td>
+          <td><span class="label label-info">optional</span></td>
+          <td>An apartment or suite number, if applicable</td>
+        </tr>
+        <tr>
+          <td>address2</td>
+          <td><span class="label label-important">required</span></td>
+          <td>Street address</td>
+        </tr>
+        <tr>
+          <td>city</td>
+          <td><span class="label label-info">optional</span> <i class="icon-info-sign"></i></td>
+          <td>City name</td>
+        </tr>
+        <tr>
+          <td>state</td>
+          <td><span class="label label-info">optional</span> <i class="icon-info-sign"></i></td>
+          <td>State abbreviation (only two characters allowed)</td>
+        </tr>
+        <tr>
+          <td>urbanization</td>
+          <td><span class="label label-info">optional</span></td>
+          <td>For Puerto Rico addresses only</td>
+        </tr>
+        <tr>
+          <td>zip5</td>
+          <td><span class="label label-info">optional</span> <i class="icon-info-sign"></i></td>
+          <td>Five digit zip code</td>
+        </tr>
+        <tr>
+          <td>zip5</td>
+          <td><span class="label label-info">optional</span></td>
+          <td>Five digit zip code</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      <i class="icon-info-sign"></i> Either city, state or zip5 must be specified.
+    </p>
+    <h5>Response</h5>
+    <pre>
+// success
+{
+  "city": "SAN FRANCISCO",
+  "firmname": "GOOGLE",
+  "address1": null,
+  "address2": "345 SPEAR ST",
+  "state": "CA",
+  "zip5": "94105",
+  "zip4": "1673"
+}
+// failure
+{
+  "source": "API_AddressCleancAddressClean.CleanAddress2;SOLServer.CallAddressDll",
+  "number": "-2147219402",
+  "description": "Invalid State Code.  "
+}
+    </pre>
+  </div>
+</div>
+{% endblock %}
