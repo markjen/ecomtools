@@ -14,6 +14,7 @@ app = webapp2.WSGIApplication(
             routes.NamePrefixRoute(
                 'usps-',
                 [
+                    webapp2.Route('/track', handler.UspsTrackHandler, 'track'),
                     webapp2.Route('/verify', handler.UspsVerifyHandler, 'verify'),
                 ]).get_routes()
         ),

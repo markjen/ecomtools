@@ -93,19 +93,84 @@
     <pre>
 // success
 {
-  "city": "SAN FRANCISCO",
-  "firmname": "GOOGLE",
-  "address1": null,
-  "address2": "345 SPEAR ST",
-  "state": "CA",
-  "zip5": "94105",
-  "zip4": "1673"
+  "City": "SAN FRANCISCO",
+  "FirmName": "GOOGLE",
+  "Address1": null,
+  "Address2": "345 SPEAR ST",
+  "State": "CA",
+  "Zip5": "94105",
+  "Zip4": "1673"
 }
 // failure
 {
-  "source": "API_AddressCleancAddressClean.CleanAddress2;SOLServer.CallAddressDll",
-  "number": "-2147219402",
-  "description": "Invalid State Code.  "
+  "Source": "API_AddressCleancAddressClean.CleanAddress2;SOLServer.CallAddressDll",
+  "Number": "-2147219402",
+  "Description": "Invalid State Code.  "
+}
+    </pre>
+
+    <h4>Track</h4>
+    <p>
+      The <a href="https://www.usps.com/webtools/htm/Track-Confirm-v4-1a.htm#_Toc83183008">Track/Confirm Web Tool</a> lets customers determine the delivery status of their Priority Mail, Express Mail, and Package Services (Parcel Post, Bound Printed Matter, Library Mail, and Media Mail) packages with Delivery Confirmation.</p>
+    <h5>Request</h5>
+    <p>
+      Method: GET
+    </p>
+    <p>
+      URL: /api/usps/track
+    </p>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>param</th>
+        <th></th>
+        <th>description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>key</td>
+        <td><span class="label label-important">required</span></td>
+        <td>API key</td>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td><span class="label label-important">required</span></td>
+        <td>Tracking number</td>
+      </tr>
+      </tbody>
+    </table>
+    <h5>Response</h5>
+    <pre>
+// success
+{
+  "TrackDetail": [
+    {
+      "EventTime": "8:50 am",
+      "EventZIPCode": "84068",
+      "EventDate": "December 11, 2012",
+      "EventCity": "PARK CITY",
+      "EventState": "UT",
+      "Event": "Out for Delivery"
+    },
+    ...
+  ],
+  "TrackSummary": [
+    {
+      "EventTime": "10:40 am",
+      "EventZIPCode": "84068",
+      "EventDate": "December 11, 2012",
+      "EventCity": "PARK CITY",
+      "EventState": "UT",
+      "Event": "Delivered"
+    }
+  ]
+}
+// failure
+{
+  "Source": null,
+  "Number": "-2147219302",
+  "Description": "No record of that item"
 }
     </pre>
   </div>

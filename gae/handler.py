@@ -77,3 +77,13 @@ class UspsVerifyHandler(ApiHandler):
   def get(self):
     self.verify_api_key()
     self.json_out(usps.verify(**self.request.params.copy()))
+
+
+class UspsTrackHandler(ApiHandler):
+  def get(self):
+    self.verify_api_key()
+    id = self.request.get('id')
+    if id:
+      self.json_out(usps.track(self.request.get('id')))
+    else:
+      self.abort(400, 'No id specified')
