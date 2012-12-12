@@ -6,6 +6,7 @@ import webapp2
 from webapp2_extras import jinja2
 
 import config
+from ecomtools import salestax
 from ecomtools import usps
 import model
 
@@ -71,6 +72,12 @@ class ApiHandler(webapp2.RequestHandler):
   def json_out(self, value):
     self.response.headers['Content-Type'] = 'application/json'
     self.response.write(json.dumps(value))
+
+
+class TaxLookupHandler(ApiHandler):
+  def get(self):
+    self.verify_api_key()
+    self.json_out(salestax.lookup(self.request.get('city'), self.request.get('state'), self.request.get('zip5')))
 
 
 class UspsVerifyHandler(ApiHandler):

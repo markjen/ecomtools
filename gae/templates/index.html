@@ -18,6 +18,55 @@
     </form>
 
     <h2>API Docs</h2>
+    <h3>Sales Tax</h3>
+    <h4>Lookup</h4>
+    <p>
+      Method: GET
+    </p>
+    <p>
+      URL: /api/tax/lookup
+    </p>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>param</th>
+        <th></th>
+        <th>description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>key</td>
+        <td><span class="label label-important">required</span></td>
+        <td>API key</td>
+      </tr>
+      <tr>
+        <td>city</td>
+        <td><span class="label label-important">required</span></td>
+        <td>City name</td>
+      </tr>
+      <tr>
+        <td>state</td>
+        <td><span class="label label-important">required</span> <i class="icon-info-sign"></i></td>
+        <td>State abbreviation (only two characters allowed)</td>
+      </tr>
+      <tr>
+        <td>zip5</td>
+        <td><span class="label label-important">required</span></td>
+        <td>Five digit zip code</td>
+      </tr>
+      </tbody>
+    </table>
+    <p>
+      <i class="icon-info-sign"></i> Only CA currently supported
+    </p>
+    <h5>Response</h5>
+    <pre>
+// success
+7.25
+// failure
+null</pre>
+
     <h3>USPS Webtools</h3>
     <h4>Verify</h4>
     <p>
@@ -106,8 +155,7 @@
   "Source": "API_AddressCleancAddressClean.CleanAddress2;SOLServer.CallAddressDll",
   "Number": "-2147219402",
   "Description": "Invalid State Code.  "
-}
-    </pre>
+}</pre>
 
     <h4>Track</h4>
     <p>
@@ -171,8 +219,7 @@
   "Source": null,
   "Number": "-2147219302",
   "Description": "No record of that item"
-}
-    </pre>
+}</pre>
   </div>
 </div>
 {% endblock %}

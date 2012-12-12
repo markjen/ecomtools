@@ -9,6 +9,7 @@ app = webapp2.WSGIApplication(
     [
         webapp2.Route(r'/', handler.IndexHandler, 'index'),
         webapp2.Route(r'/register', handler.RegisterHandler, 'register'),
+        webapp2.Route(r'/api/tax/lookup', handler.TaxLookupHandler, 'tax-lookup'),
         routes.PathPrefixRoute(
             r'/api/usps',
             routes.NamePrefixRoute(

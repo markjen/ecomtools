@@ -102,5 +102,3 @@ def track(id):
   def extract_event(element):
     return extract(element, ['Event', 'EventDate', 'EventTime', 'EventCity', 'EventZIPCode', 'EventState'])
   return {node_name: [extract_event(element) for element in dom.getElementsByTagName(node_name)] for node_name in ['TrackSummary', 'TrackDetail']}
-
-
