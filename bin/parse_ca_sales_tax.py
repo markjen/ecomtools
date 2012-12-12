@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# To parse city_rates.csv from http://www.boe.ca.gov/sutax/pam71.htm
 import argparse
 import pprint
 
