@@ -47,7 +47,7 @@ class RegisterHandler(TemplateHandler):
       if len(email_parts) == 2:
         entity = model.Registration.create(email)
         mail.send_mail(
-            sender='noreply@{}.appspot.com'.format(app_identity.get_application_id()),
+            sender='noreply@{}.appspotmail.com'.format(app_identity.get_application_id()),
             to=email,
             subject='eCommerce tools API key',
             body='Your API key is "{}"'.format(entity.key.id()))
